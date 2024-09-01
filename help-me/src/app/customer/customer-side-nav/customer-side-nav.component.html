@@ -1,0 +1,51 @@
+
+<!-- <ion-menu contentId="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <div class="side-menu-block">
+        <ion-thumbnail class="logo-thumb-menu" (click)="navigateHome()">
+          <img alt="HelpGenei" src="../../../assets/logo.png" />
+        </ion-thumbnail>
+        <ion-title>HelpGenie</ion-title>
+      </div>
+   
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding">
+    
+  </ion-content>
+</ion-menu> -->
+<div class="ion-page" id="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <!-- <ion-title>Helpgenie</ion-title> -->
+        <ion-thumbnail class="logo-thumb" (click)="navigateHome()">
+          <img alt="HelpGenei" src="../../../assets/logo.png" />
+        </ion-thumbnail>
+
+      <!-- <ion-buttons slot="end">
+        
+        <ion-badge slot="start">11</ion-badge>
+        <ion-icon name="notifications-outline" size="large"></ion-icon>
+      </ion-buttons> -->
+@if(this.userData){
+  <ion-icon class="user-img"  slot="end"  name="menu-outline" (click)="openSettings()"></ion-icon>
+  <!-- <ion-avatar class="user-img"  slot="end" (click)="openSettings()" >
+    <img [alt]="this.userData.displayName" [src]="photoURL"  srcset="../../../assets/icon/profile.png"/>
+  </ion-avatar> -->
+
+}
+
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding"> 
+   <!-- {{userData|json}}  -->
+    <router-outlet></router-outlet>
+  </ion-content>
+</div>
+
+
+

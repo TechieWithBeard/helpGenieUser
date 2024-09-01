@@ -1,0 +1,28 @@
+
+  <!-- Display the list of user addresses -->
+  <ion-list *ngIf="addressData"  [ngClass]="isOpenMaps?'hide-form':'main-form-container'">
+    <ion-item *ngFor="let address of addressData">
+      <ion-label>
+        <h2>{{ address?.user_address_tag }}</h2>
+        <p>{{ address?.user_address }}</p>
+        <p>Pincode: {{ address?.user_pincode }}</p>
+        <p>Nearby Landmark: {{ address?.user_nearby_landmark }}</p>
+        <ion-badge color="success" *ngIf="address.default">DEFAULT</ion-badge>
+        <ion-button fill="outline" *ngIf="!address.default" (click)="setDefault(address)">SET DEFAULT</ion-button>
+      </ion-label>
+      <ion-buttons slot="end">
+        <!-- Edit button to edit the address -->
+        <!-- <ion-button (click)="editAddress(address)">
+          <ion-icon slot="end" name="pencil"></ion-icon>
+        </ion-button> -->
+      </ion-buttons>
+    </ion-item>
+  </ion-list>
+
+  <!-- Button to add a new address -->
+  <ion-button expand="full" (click)="addAddress()"  [ngClass]="isOpenMaps?'hide-form':'main-form-container'">
+    <ion-icon slot="start" name="add"></ion-icon>
+    
+    Add New Address
+  </ion-button>
+

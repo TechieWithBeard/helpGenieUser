@@ -1,0 +1,86 @@
+
+<ion-progress-bar type="indeterminate" *ngIf="providerLoadingStatus==='LOADING'"></ion-progress-bar>
+<div class="location-note" *ngIf="providerLoadingStatus==='LOADED' && serviceProviderData.length>0">
+  <ion-icon name="location"></ion-icon>
+  <p>Genie near your location.</p>
+</div>
+<div class="service-provider-block">
+
+  @if (serviceProviderData.length>0) {
+    <div class="provider-block" *ngFor="let provider of serviceProviderData" (click)="selectProvider(provider)">
+      <!-- {{provider|json}} -->
+          <ion-card class="provider-card">
+            <!-- <ion-card-header>
+              <ion-card-title>  {{provider.service_provider_name}}</ion-card-title>
+            </ion-card-header> -->
+          
+            <ion-card-content>
+              <div class="provider-detail-block">
+                <div class="p-image-block">
+                  <ion-thumbnail slot="start">
+                    <!-- <img [alt]="provider.service_provider_name" [src]="provider.service_provider_image" /> -->
+                      <img [alt]="provider.service_provider_name" src="../../../assets/icon/category/provider.webp" />
+                  </ion-thumbnail>
+                </div>
+                <div class="content-block">
+                  <div class="p-name-block">
+                    {{provider.service_provider_name}}
+                  </div>
+                  <div class="p-category-block">
+                    <ion-chip color="primary">       {{provider.service_provider_category}}</ion-chip>
+             
+                  </div>
+                  <div class="rating-container">
+                    <!-- <ion-icon name="star" *ngFor="let star of Array(provider.service_provider_rating); let i = index" [class.selected]="i < rating" (click)="rate(i + 1)"></ion-icon> -->
+                    <app-star-rating [rating]=provider.service_provider_rating></app-star-rating>
+      
+                    <div class="total-review-container" *ngIf="provider.service_provider_review?.review">
+                     ({{provider.service_provider_review?.review.length}} Reviews) 
+                    </div>
+                  </div>
+                </div>
+               
+              
+              </div>
+          
+            </ion-card-content>
+          </ion-card>
+      
+      
+      
+      
+      
+        </div>
+  }
+  @else {
+    <div class="no-provider-found-block">
+      <div class="not-found-container">
+        <div class="nf-img-container">
+      
+          <!-- <img src="../../../assets/icon/not-found.png"> -->
+        </div>
+        <div class="nf-text-container" *ngIf="providerLoadingStatus==='LOADED'">
+          <div class="no-genie-container">
+            <ion-icon name="alert-circle-outline" class="no-genie-icon"></ion-icon>
+            <p class="no-genie-message">No Genie found near your Location</p>
+          </div>
+        </div>
+      </div>
+        </div>
+  }
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+

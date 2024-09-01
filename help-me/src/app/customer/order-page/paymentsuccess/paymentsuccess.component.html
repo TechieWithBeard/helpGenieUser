@@ -1,0 +1,46 @@
+@if (paymentStatus=="SUCCESS") 
+{
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>
+        Payment Success
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content class="ion-text-center ion-padding">
+    <ion-icon name="checkmark-circle-outline" size="large" color="success"></ion-icon>
+    <h2>Payment Successful!</h2>
+    <p>Thank you for your purchase.</p>
+    <p>Redirecting in {{ countdown }} seconds...</p>
+  </ion-content>
+  
+}
+@else if(paymentStatus=='FAILED'){
+  <ion-header>
+    <ion-toolbar color="danger">
+      <ion-title>
+        Payment Failed
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content class="ion-text-center ion-padding">
+    <ion-icon name="close-circle-outline" size="large" color="danger"></ion-icon>
+    <h2 style="color: red;">Payment Failed</h2>
+    <p><b>Sorry, your payment was not successful.</b></p>
+    <p>Order Id: {{orderId}}</p>
+    <p style="color: green;"><b>If any amount is debited, it will be refunded in 3-4 working days.</b></p>
+    <!-- <ion-button expand="block" color="primary" routerLink="/home">Try Again</ion-button> -->
+    <p>Redirecting in {{ countdown }} seconds...</p>
+  </ion-content>
+}
+@else {
+  <!-- <ion-item class="ion-text-center ion-padding">  -->
+    <!-- <ion-label>Circular</ion-label> -->
+    <div class="loading-container">
+      <ion-spinner name="circular"></ion-spinner>
+    </div>
+
+  <!-- </ion-item> -->
+}

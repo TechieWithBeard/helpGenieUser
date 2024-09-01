@@ -1,0 +1,144 @@
+<!-- <p>
+  order-page works!
+</p>
+
+
+{{orderStatus|json}} -->
+
+
+@if (orderStatus) {
+  <ion-card>
+    <ion-card-header>
+   
+      <ion-card-title>Order Status: <span class="chip-text"><ion-chip [outline]="true">{{ getStatusLabel(orderStatus.order_status) }}</ion-chip></span> </ion-card-title>
+      <ion-card-subtitle>Order ID: {{ orderStatus?.order_short_id }}</ion-card-subtitle>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          <ion-label>Date</ion-label>
+          <ion-note>{{ orderStatus?.order_date | date: 'medium' }}</ion-note>
+        </ion-item>
+        <!-- Add more items as needed for other order details -->
+  
+        <!-- <ion-item-divider>
+          <ion-label>Order Items</ion-label>
+        </ion-item-divider>
+  
+        <ion-item *ngFor="let item of orderStatus.order_items">
+          <ion-label>{{ item.service_name }}</ion-label>
+          <ion-note slot="end">{{ item.total_price | currency: 'INR'  }}</ion-note>
+        </ion-item> -->
+      </ion-list>
+  <!-- order_provider_value -->
+      <ion-item-divider>
+        <ion-label>Paid </ion-label>
+        <ion-label slot="end">{{orderStatus.order_value| currency: 'INR' }}</ion-label>
+      </ion-item-divider>
+      <ion-item-divider>
+        <ion-label>Amout to be paid to Genie </ion-label>
+        <ion-label slot="end">{{orderStatus.order_provider_value | currency: 'INR' }}</ion-label>
+      </ion-item-divider>
+      <!-- Add more content for other order details, such as user address, payment status, etc. -->
+    </ion-card-content>
+  </ion-card>
+  
+  
+
+}
+@else {
+  <ion-list>
+    <ion-list-header>
+      <ion-skeleton-text [animated]="true" style="width: 80px"></ion-skeleton-text>
+    </ion-list-header>
+    <ion-item>
+      <ion-thumbnail slot="start">
+        <ion-skeleton-text [animated]="true"></ion-skeleton-text>
+      </ion-thumbnail>
+      <ion-label>
+        <h3>
+          <ion-skeleton-text [animated]="true" style="width: 80%;"></ion-skeleton-text>
+        </h3>
+        <p>
+          <ion-skeleton-text [animated]="true" style="width: 60%;"></ion-skeleton-text>
+        </p>
+        <p>
+          <ion-skeleton-text [animated]="true" style="width: 30%;"></ion-skeleton-text>
+        </p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+}
+
+<div class="ticketContainer" *ngIf="ticketList.length>0">
+  <ion-list>
+    <ion-list-header>
+      <ion-label>Support Tickets</ion-label>
+    </ion-list-header>
+    <ion-item *ngFor="let ticket of ticketList" >
+      <ion-chip slot="end" color="primary">{{ ticket.query_status }}</ion-chip>
+      <ion-label>
+        <p >{{ ticket.query_title }}</p>
+        <p >{{ ticket.feedback}}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</div>
+
+<div class="help-conatiner">
+  <div class="help">
+    <ion-button fill="clear" (click)="orderHelp(orderStatus.order_id)">Need Help?</ion-button>
+  </div>
+
+  @if (prividerContact &&orderStatus && orderStatus.order_status!=="COMPLETED") {
+    <ion-button (click)="callGenie()">
+      Call Genie
+      <ion-icon slot="start" name="call"></ion-icon>
+    </ion-button>
+  }
+
+
+  @if (orderStatus&&orderStatus.order_status!=="COMPLETED") {
+    @if (orderStatus?.completition_code ){
+
+
+        <div  class="rate-genie ion-padding">
+        
+          @if (rating>0) {
+            <div class="readonly-rating">
+              <app-star-rating [rating]=rating></app-star-rating>
+
+            </div>
+
+          }@else {
+            <div class="rate-title">
+              Rate your Genie
+            </div> 
+          <app-star-rating-review [rating]="rating" (ratingUpdated)="rateProvider($event)"></app-star-rating-review>
+
+          }
+      </div>
+ 
+      <ion-card class="otp-container">
+        <h2 class="title">Completion OTP</h2>
+        <p class="message">Please provide this OTP to the service provider to mark the service as complete:</p>
+        <h3 class="otp">{{ orderStatus?.completition_code }}</h3>
+      </ion-card>
+
+
+
+     
+      <!-- <div class="otp-container">
+        <ion-button expand="block" color="primary" (click)="presentCompletionAlert()">Complete Service</ion-button>
+      </div> -->
+ 
+  }@else {
+    unable to fetch OTP
+  }
+
+
+  }
+
+
+</div>

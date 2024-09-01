@@ -1,0 +1,64 @@
+@if (loading) {
+  <ion-progress-bar type="indeterminate"></ion-progress-bar>
+}
+
+<div class="dashboard-main-container">
+
+  <div class="user-container">
+  <div class="user-avatar-container">
+ 
+  </div>
+
+    <div class="user-metadata-block">
+      <div class="name-container">
+        🧞 Genie for, 
+        @if (this.userData) {
+          {{this.userData.displayName|titlecase}}
+        }
+   
+
+       </div>
+       @if (addressData.length>0) {
+        <div class="location-contaoiner" *ngIf="addressData">
+          {{addressData[0].user_address}}
+            </div>
+       }
+   
+    </div>
+  
+  </div>
+
+  <div class="main-frame">
+    <!-- <div class="search-frame">
+      <ion-searchbar animated="true" [@placeholderAnimation]="animationState" placeholder="{{ currentPlaceholder }}"></ion-searchbar>
+    </div> -->
+    <div class="dashboard-frame">
+      <div class="category-list-container">
+        <div class="category-list" >
+          @for (data of categoryList; track $index) {
+            <ion-card (click)="selectService(data)" *ngIf="data.nearby" [ngClass]="data.nearby?'near-enabled':''">
+              <img class="cat-image"  [src]="'../../../assets/icon/category/'+data.id+'.webp'" />
+              <ion-card-header>
+  
+                <!-- <ion-text >
+                  <h3>{{data.displayName}}</h3>
+                </ion-text> -->
+                <ion-card-subtitle>{{data.display_name}}</ion-card-subtitle>
+  <!-- {{data.nearby}} -->
+                <!-- <ion-card-title>{{data.displayName}}</ion-card-title> -->
+              </ion-card-header>
+            
+           
+            </ion-card>
+
+          }
+   
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="main-condition-container">
+  <ion-button fill="clear" routerLink="/terms-condition"> Terms of Use and Refund Policy</ion-button> <ion-button fill="clear" class="link-data" routerLink="/privacy-policy">privacy policies</ion-button>
+</div> -->

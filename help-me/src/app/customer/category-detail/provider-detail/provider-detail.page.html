@@ -1,0 +1,328 @@
+@if (selectedProviderData) {
+  
+  <div class="service-block">
+    <ion-card class="provider-info-card">
+      <ion-card-content>
+        <div class="provider-info-block">
+          <div class="provider-name-block">
+            <div class="image-block">
+              @if (selectedProviderData.service_provider_image) {
+                <ion-avatar>
+                  <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+                </ion-avatar>
+              }@else {
+                <ion-avatar>
+                    <div class="name-icon">
+                      {{selectedProviderData.service_provider_name.charAt(0)}}
+                    </div>
+                  </ion-avatar>
+              }
+            </div>
+            <div class="info-panel">
+
+            <h2> <b>{{selectedProviderData.service_provider_name|titlecase}} </b></h2>
+
+              <div class="service-completed-block">
+                {{selectedProviderData.total_service_completed * 10}}+ services provided <br>
+                EXP {{selectedProviderData.service_provider_experience}} @if (selectedProviderData.service_provider_experience>1) {
+                  years
+                }@else {
+                  year
+                }
+              </div>
+              <div class="rating-block">
+                 <app-star-rating [rating]="selectedProviderData.service_provider_rating"></app-star-rating>
+              </div>
+            </div>
+          </div>
+         
+        </div>
+      </ion-card-content>
+    
+    </ion-card>
+  
+    <div class="service-list-container">
+      <ion-list>
+        <ion-list-header>
+          <ion-label>Services</ion-label>
+        </ion-list-header>
+
+        <!-- <ion-item>
+          <ion-label>
+            <a href="https://www.instagram.com/{{ instagramHandle }}" target="_blank">
+              Follow on Instagram
+            </a>
+          </ion-label>
+        </ion-item> -->
+@if (selectedProviderData.consultation_fees) {
+  <!-- <ion-card >
+    <div class="service-data">
+      <div class="service-name">
+        {{'Consultation Charges' |titlecase}}
+      </div>
+    
+    </div>
+    <div class="" slot="end">
+       {{selectedProviderData.consultation_fees | currency:'INR'}}
+    </div>
+  </ion-card> -->
+
+
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title> {{'Consultation Charges' |titlecase}}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <div class="consultation_fees" slot="end">
+        {{selectedProviderData.consultation_fees | currency:'INR'}}
+     </div>
+    </ion-card-content>
+    <!-- <ion-card-subtitle>*This is the basic charge for consultation, applicable only if no service is availed.</ion-card-subtitle> -->
+  
+  </ion-card>
+
+
+}
+      
+
+        @if ( selectedProviderData.service_provider_domain) {
+          <ion-label>
+            <h1>Services</h1>
+            <!-- <p>Paragraph</p> -->
+          </ion-label>
+        <ion-item *ngFor="let serviceData of selectedProviderData.service_provider_domain">
+         
+          <div class="service-item-container">
+            <div class="service-data">
+              <div class="service-name">
+                {{serviceData.service_name |titlecase}}
+              </div>
+              <div class="service-rate" >
+                {{serviceData.rate | currency:'INR'}}
+             </div>
+            </div>
+          
+           <!-- - (Rs {{serviceData.rate}}) -->
+            <div class="add-btn-block" slot="end">
+              <div class="button_positon quantity_btn"  *ngIf="serviceData.count && serviceData.count>0">
+                <ion-button (click)="decreaseCount(serviceData)">-</ion-button>
+                {{serviceData.count}}
+            
+                <ion-button (click)="increaseCount(serviceData)">+</ion-button>
+              </div>
+        
+              <div class="button_positon quantity_add_btn"  *ngIf="serviceData.count===0">
+                <ion-button (click)="increaseCount(serviceData)">ADD</ion-button>
+              </div>
+            </div>
+              
+          </div>
+ 
+        </ion-item>
+
+      }
+
+
+      </ion-list>
+
+        
+    </div>
+  
+    <!-- <div class="schedule-container">
+      <div class="schedule-text-container">
+        <ion-label>Schedule Date</ion-label>
+      </div>
+      <ion-datetime-button datetime="datetime"></ion-datetime-button>
+
+    </div> -->
+
+ 
+    @if (taxData) {
+      <!-- <ion-button (click)="bookAppointment(selectedProviderData)">Schedule Appointment for {{taxData.service_charge|currency:'INR'}}</ion-button> -->
+      <ion-button (click)="bookAppointment(selectedProviderData)">Book Slot</ion-button>
+
+    }
+
+    <!-- @if (selectedProviderData?.service_provider_review?.review.length>0) {
+      <div class="review-container">
+
+        <ion-list [inset]="true" lines="none">
+          <ion-list-header>
+            <ion-label>Reviews</ion-label>
+          </ion-list-header>
+          <ion-item *ngFor="let review of selectedProviderData?.service_provider_review?.review" >
+         <div class="review-container-block">
+    
+    
+            <div class="review-user-detail-slot">
+              <ion-avatar >
+                <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
+              </ion-avatar>
+      
+              <div class="review-u-container">
+                <div class="review-user-name">
+                  {{ review.name }}
+               
+                </div>
+                <div class="review-ser-rating">
+                  <ion-icon name="star" class="rating-star"></ion-icon> {{ review.service_provider_rating }}
+                </div>
+                
+              </div>
+            
+            </div>
+         
+            <div class="review-description-slot">
+              {{ review.description }}
+            </div>
+    
+          </div>
+         
+          </ion-item>
+        </ion-list>
+      </div>
+    } -->
+
+
+  </div>
+
+}
+
+
+
+
+
+
+
+<ion-modal [isOpen]="openOrderSummaryDetail" (willDismiss)="onWillDismiss($event)" [initialBreakpoint]="0.75" [breakpoints]="[0, 0.25, 0.5, 0.75,1]">
+  <ng-template>
+    <ion-header>
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-button (click)="closeSummary()">Cancel</ion-button>
+        </ion-buttons>
+        <ion-title class="provider_title">Summary</ion-title>
+        <ion-buttons slot="end">
+          <ion-button  (click)="confirmPayment()" [strong]="true">Checkout</ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="ion-padding">
+<div class="summary-block">
+  <div class="main-summary-block">
+    <ion-list>
+      <ion-item-group>
+    
+        <div class="sum-conatiner">
+          <div class="order-summary-container">
+      
+              <ion-item class="oder-item-block" *ngFor="let item of service_data_list">
+                <div class="item-name" slot="start">
+                  {{item.service_name}}
+                  <div class="quantity-block" color="light">
+                   <div class="item-quantity"  >
+                     {{item.count}}
+                   </div>
+                   <div class="item-multiply">
+                    x
+                   </div>
+                   <div class="item-price">
+                     {{item.rate| currency:'INR'}}
+                   </div>
+                  </div>
+                </div>
+                <div class="order-number-data" slot="end">
+                 
+                  <div class="item-total">
+                    {{item.total_price| number:'1.2-2'| currency:'INR'}}
+                  </div>
+                </div>
+               
+              </ion-item >
+      
+      
+           <ion-item-divider>
+             <ion-label> Payment Summary </ion-label>
+           </ion-item-divider>
+           <!-- <ion-item>
+             <div class="total-container">
+              <b>Item total</b> 
+             </div>
+             <div class="total-data" slot="end">
+               {{before_total |currency:'INR'}}
+             </div>
+           </ion-item> -->
+           <ion-item>
+             <div class="total-container">
+              <b>Taxes and Fee</b> 
+             </div>
+             <div class="total-data" slot="end">
+               <!-- {{gst_charge|currency:'INR'}} -->
+               {{taxData.service_charge|currency:'INR'}}
+             </div>
+           </ion-item>
+           <ion-item>
+            
+            <div class="total-container">
+              <b>Service Total</b> 
+             </div>
+             <div class="total-data" slot="end">
+               <!-- {{gst_charge|currency:'INR'}} -->
+               {{totalAmount|currency:'INR'}}
+             </div>
+           </ion-item>
+           <ion-item [disabled]="true">
+             <div class="total-container">
+              <b>Minimum Charge</b> 
+              <br>
+              <p style="font-size: small;">*Consultation charge, need to be paid to genie if no service is availed.</p>
+             </div>
+             <div class="total-data" slot="end">
+               {{selectedProviderData?.consultation_fees|currency:'INR'}}
+             </div>
+           </ion-item>
+         <ion-item>
+             <div class="total-container">
+              <b>{{'Amount Payable Now'|titlecase}}</b> 
+             </div>
+             <div class="total-data" slot="end">
+               {{taxData.service_charge|currency:'INR'}}
+             </div>
+
+           </ion-item>
+          
+         </div>
+</div>
+       
+         </ion-item-group>
+         </ion-list>
+         <ion-item>
+           <div class="schedule-text-block">
+             Service date
+           </div>
+           <ion-datetime-button slot="end" datetime="datetime"></ion-datetime-button>
+         </ion-item>
+        </div>
+       
+   
+        
+  </div>
+
+       </ion-content>
+
+
+
+  </ng-template>
+</ion-modal>
+
+
+
+
+<ion-modal [keepContentsMounted]="true" [showBackdrop]="true" class="date-bd">
+  <ng-template>
+    <ion-datetime id="datetime" (ionChange)="dateChanged($event)" [showDefaultButtons]="true" [value]="min_date" [min]="min_date" [max]="max_date"></ion-datetime>
+  </ng-template>
+</ion-modal>
+

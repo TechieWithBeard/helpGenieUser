@@ -1,0 +1,38 @@
+<!-- {{orderList|json}} -->
+
+@if (loading) {
+  <ion-progress-bar type="indeterminate"></ion-progress-bar>
+}
+@if (orderList.length>0) {
+  <ion-list lines="full">
+    <ion-list-header>
+      <ion-label>   Past Orders</ion-label>
+    </ion-list-header>
+
+    
+
+  <ion-item *ngFor="let order of orderList" (click)="orderClicked(order.order_id)">
+    <ion-label>
+      <h2>Order #{{ order.order_short_id }}</h2>
+      <p>Date: {{ order.order_date|date }}</p>
+      <p>Total: {{ order.order_value}}</p>
+      <p>Status: 
+        <span [ngClass]="{
+          'order-status-complete': order.order_status === 'COMPLETED',
+          'order-status-pending': order.order_status !== 'COMPLETED'
+        }">{{ getStatusLabel(order.order_status) }}</span>
+      </p>
+    </ion-label>
+  </ion-item>
+</ion-list>
+}
+@else if(!loading) {
+  <ion-content class="ion-padding">
+    <div class="no-orders-container">
+      <ion-icon name="alert-circle-outline" class="no-orders-icon"></ion-icon>
+      <h2 class="no-orders-message">No Orders Found</h2>
+      <p class="no-orders-description">Please check back later for updates.</p>
+    </div>
+  </ion-content>
+}
+ 

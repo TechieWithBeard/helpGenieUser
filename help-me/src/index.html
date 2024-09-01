@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Help Genie</title>
+
+  <base href="/" />
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+  <!-- <meta name="google-signin-client_id" content="520694547505-e9dvkso6u561g33cgvgpul32m1f6ac5u.apps.googleusercontent.com"> -->
+  <meta name="color-scheme" content="light dark" />
+  <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="msapplication-tap-highlight" content="no" />
+
+  <link rel="icon" type="image/png" href="assets/logo.png" />
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <!-- add to homescreen for ios -->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+  integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+  crossorigin=""/>
+  <!-- <script src="https://js.stripe.com/v3/"></script> -->
+  <!-- Make sure you put this AFTER Leaflet's CSS -->
+ <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+ integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+ crossorigin=""></script>
+ <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRn1s6OnCG3P_fBK2-ofohuiLXRYOWxAw&libraries=places&callback=initMap&v=weekly" defer></script>
+
+ <!-- <script src="https://sdk.cashfree.com/js/v3/cashfree.js"></script> -->
+ <script src="https://sdk.cashfree.com/js/v3/cashfree.js"></script>
+ <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+     crossorigin=""></script>
+ <!-- <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script> -->
+<!-- <script>
+  window.OneSignalDeferred = window.OneSignalDeferred || [];
+  OneSignalDeferred.push(function(OneSignal) {
+    OneSignal.init({
+      appId: "139af684-e9c9-4018-9fd3-4e6cbc7af8ad",
+    });
+  });
+</script> -->
+
+
+
+</head>
+
+<!-- <script>
+  (g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})({
+    v: "weekly",
+    key: "AIzaSyCRn1s6OnCG3P_fBK2-ofohuiLXRYOWxAw"
+  });
+</script> -->
+<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRn1s6OnCG3P_fBK2-ofohuiLXRYOWxAw&libraries=places,marker&callback=initMap&solution_channel=GMP_QB_addressselection_v2_cABC" async defer></script> -->
+<!-- <script src="https://maps.google.com/maps/api/js?key=AIzaSyCRn1s6OnCG3P_fBK2-ofohuiLXRYOWxAw&libraries=geometry"></script> -->
+<body>
+  <app-root></app-root>
+ </body>
+
+</html>

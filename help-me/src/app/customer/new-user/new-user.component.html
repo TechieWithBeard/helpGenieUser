@@ -1,0 +1,150 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>
+      User Registration
+    </ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content class="ion-padding">
+
+  <div class="register-container">
+    <div class="title-content ">
+      <div class="welcome-block">
+          <img class="hg_logo" src="../../../assets/logo.png">
+        
+      </div>
+  
+    </div>
+    @if (userEmail) {
+  
+      <ion-card>
+        <ion-card-header>
+        <ion-card-subtitle>
+          {{userData.email}}
+        </ion-card-subtitle>
+        <ion-card-title>
+          WELCOME
+   
+        </ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+        </ion-card-content>
+      </ion-card>
+    }
+  
+    <form [formGroup]="registrationForm">
+      <!-- <div  [ngClass]="isOpenMaps?'hide-form':'form-content'"> -->
+  
+        <ion-item>
+          <ion-input  label="Mobile number"  labelPlacement="stacked" formControlName="mobileNumber" required  placeholder="Enter a valid 10 digit mobile number"
+       ></ion-input>
+        </ion-item>
+     
+  
+        <div class="place-block">
+          <ion-button   fill="clear" color="danger" (click)="openMaps()">
+         
+            <ion-icon slot="start" [name]="coordinates?'pin-outline':'locate-outline'"></ion-icon>
+           {{coordinates?'Edit location':'Select your location'}} </ion-button>
+  
+           @if (coordinates &&placeData) {
+            <div class="place-info">
+              {{placeData.address.state_district}},{{placeData.address.state}}
+            </div>
+      
+           }
+        </div>
+      
+          <!-- <ion-label>Select Location</ion-label> -->
+          <!-- <ion-button  expand="full" style="flex-grow: 1;" >
+          @if (!coordinates) {
+            Select Location
+          }
+          @else{
+            Edit Location
+          }
+          </ion-button> -->
+          <!-- <ion-icon *ngIf="locationRegistered" style="color: green;flex-grow: 1" name="checkmark-circle-outline"></ion-icon> -->
+    
+  
+        <!-- <capacitor-google-map class="hg-map"  id="map"></capacitor-google-map> -->
+               
+        @if(coordinates){
+          <ion-item  color="light" *ngIf="coordinates" >
+            <!-- <ion-label>Address</ion-label> -->
+            <ion-input  label="Address" labelPlacement="stacked" formControlName="address" ></ion-input>
+          
+          </ion-item>
+  
+       
+        <ion-item  color="light"  *ngIf="coordinates"  >
+          <!-- <ion-label>Pincode</ion-label> -->
+          <ion-input  label="Pincode" labelPlacement="stacked" type="number" formControlName="pincode" ></ion-input>
+        
+        </ion-item>
+        <ion-item  color="light"  *ngIf="coordinates"  >
+          <!-- <ion-label>Landmark</ion-label> -->
+          <ion-input  label="Landmark" labelPlacement="stacked" formControlName="landmark" ></ion-input>
+        
+        </ion-item>
+  
+        <ion-item color="light"   *ngIf="coordinates"  >
+          <!-- <ion-label>SAVE AS</ion-label> -->
+          <ion-segment value="home" formControlName="tag" color="primary" >
+            <ion-segment-button value="home">
+              <ion-icon name="home"></ion-icon>
+              <ion-label>Home</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="office">
+              <ion-icon name="briefcase-outline"></ion-icon>
+              <ion-label>Office</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="other">
+              <ion-icon name="pin-outline"></ion-icon>
+              <ion-label>Other</ion-label>
+            </ion-segment-button>
+          </ion-segment>
+  
+  </ion-item>
+  
+        }
+             
+      <div class="action-block">
+        <ion-button expand="full" [disabled]="!registrationForm.valid" (click)="registerUser()">
+              {{mode==='new'||'add'?'Register':'Update'}}
+        </ion-button>
+      </div>
+   
+      
+    </form>
+  
+  
+  </div>
+
+
+
+
+
+
+
+
+
+  <ion-toast
+  [isOpen]="isDataInvalid"
+  message="Something went wrong.. Please try again."
+  [duration]="5000"
+  (didDismiss)="navigatetoLogin()"
+></ion-toast>
+
+
+
+
+</ion-content>
+
+
+
+
+
+
+

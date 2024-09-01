@@ -1,0 +1,39 @@
+
+
+    <ion-header>
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-back-button text="Previous" icon="caret-back"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Pin your location</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content >
+  <div class="map-selection-container">
+
+    <div class="map-searchbox">
+      <ion-searchbar type="text" [(ngModel)]="searchInput" placeholder="Search for a building, street name, or area" (keyup)="onKeyUp($event)" id="location-input"></ion-searchbar>
+      <div class="placelist-container" *ngIf="showPopup">
+        <div class="place-item" *ngFor="let place of dropdownOptions" (click)="pinplace(place.value,place.textContent)">{{ place.textContent }}</div>
+      </div>
+    </div>
+    <div class="cap-map">
+      <!-- <capacitor-google-map class="hg-map"  id="map" #mapRef></capacitor-google-map>
+      -->
+      <div id="map"></div>
+     </div>
+     <div class="locate-me-btn">
+      <ion-button color="light" class="btn-locate" (click)="locateMe()" [disabled]="!map">
+        <ion-icon slot="start" name="locate-outline"></ion-icon>
+        LOCATE ME</ion-button>
+     </div>
+  </div>
+
+    </ion-content>
+
+    <ion-footer>
+      <ion-toolbar>
+        <ion-button  expand="full" (click)="saveLocation()" [disabled]="coordinates===null">CONFIRM LOCATION</ion-button>
+
+      </ion-toolbar>
+    </ion-footer>

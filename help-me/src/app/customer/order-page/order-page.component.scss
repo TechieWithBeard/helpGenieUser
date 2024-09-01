@@ -1,0 +1,50 @@
+.help-conatiner{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+
+.otp-container {
+    background: #f4f4f4;
+    display: flex;
+    padding: 20px;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .title {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .message {
+    margin-bottom: 20px;
+  }
+  
+  .otp {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+  }
+
+
+  .rate-genie{
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap:1rem;
+  }
+
+
+
+  .readonly-rating{
+
+  }

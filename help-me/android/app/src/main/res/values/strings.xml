@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Help Genie</string>
+    <string name="title_activity_main">HelpGenie</string>
+    <string name="package_name">com.helpgenie.helpgenie</string>
+    <string name="custom_url_scheme">com.helpgenie.helpgenie</string>
+</resources>

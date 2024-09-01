@@ -128,3 +128,9 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+
+
+
+help-me/.angular/*
+help-me/node_modules/*

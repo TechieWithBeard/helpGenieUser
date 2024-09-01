@@ -1,0 +1,110 @@
+
+
+
+#map{
+  height: 70vh;
+}
+
+
+capacitor-google-map, .gmap {
+  display: inline-block;
+  width: 100%;
+  height: 70vh;
+}
+
+
+
+
+.notification-container{
+  background-color: #E8EAF6;
+  border-radius: 0.2rem;
+  margin: 1rem;
+  padding: 1rem;
+}
+
+
+
+.notification-block{
+  background: #EF5350;
+  padding: 0.2rem;
+  border-radius: 0.2rem;
+  color: white;
+  height: 2rem;
+  /* margin-bottom: 0.5rem;*/
+}
+
+
+
+
+
+
+
+.map-selection-container{
+  display: grid;
+  grid-template-rows: auto auto auto 3rem ;
+  
+}
+
+.map-searchbox{
+display: flex;
+flex-direction: column;
+background-color: white;
+}
+
+
+.hide-form{
+  height: 0px;
+  display: none;
+}
+
+
+
+
+//   .hg-map{
+// z-index: 99999;
+//   }
+
+
+
+.map-searchbox{
+background-color: white;
+}
+
+
+
+
+.map-searchbox {
+position: relative;
+background-color: white;
+}
+
+.placelist-container {
+position: absolute;
+top: calc(100% + 5px); /* Position it below the input */
+left: 0;
+z-index: 1000; /* Ensure it's above other elements */
+background-color: #fff;
+border: 1px solid #ccc;
+border-radius: 4px;
+box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Add box shadow for a raised effect */
+max-height: 200px; /* Limit the height if needed */
+overflow-y: auto; /* Allow scrolling if content exceeds container height */
+width: calc(100% - 2px); /* Adjust width for borders */
+transition: opacity 0.2s ease-in-out; /* Add transition for smooth appearance */
+opacity: 0; /* Initially hide the container */
+pointer-events: none; /* Disable pointer events so it doesn't interfere with input */
+}
+
+.map-searchbox:hover .placelist-container {
+opacity: 1; /* Show container on hover */
+pointer-events: auto; /* Enable pointer events */
+}
+
+.place-item {
+padding: 8px 12px;
+cursor: pointer;
+}
+
+.place-item:hover {
+background-color: #f0f0f0; /* Change background color on hover */
+}

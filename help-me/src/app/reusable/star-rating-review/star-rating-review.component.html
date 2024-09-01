@@ -1,0 +1,18 @@
+<div class="star-rating">
+  <ion-icon 
+    *ngFor="let star of stars; let i = index"
+    [name]="star ? 'star' : 'star-outline'" 
+    class="star-icon"
+    (click)="onStarClick(i)">
+  </ion-icon>
+</div>
+
+
+
+
+<!-- <app-star-rating 
+  [rating]="3" 
+  [starCount]="5" 
+  [color]="'tertiary'" 
+  (ratingUpdated)="onRatingChange($event)">
+</app-star-rating> -->

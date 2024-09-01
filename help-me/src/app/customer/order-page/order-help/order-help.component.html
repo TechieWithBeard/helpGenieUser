@@ -1,0 +1,37 @@
+<!-- <p>
+  order-help works! {{orderId}}
+</p> -->
+
+
+<!-- <ion-content> -->
+  <div class="help-container">
+    <div class="help-input-container">
+      <ion-item>
+        <ion-label position="stacked">Title</ion-label>
+        <ion-input [(ngModel)]="helpTitle" placeholder="Enter title"></ion-input>
+      </ion-item>
+    
+      <ion-item>
+        <ion-label position="stacked">Description</ion-label>
+        <ion-textarea [(ngModel)]="helpDescription" placeholder="Enter description"></ion-textarea>
+      </ion-item>
+    </div>
+    <div class="help-action-container">
+      <ion-button expand="full" (click)="sendHelp()">Send</ion-button>
+
+    </div>
+
+  
+  </div>
+<!-- </ion-content> -->
+
+
+<!-- 
+<ion-alert
+  [isOpen]="isAlertOpen"
+  header="Query Sent Successfully"
+  message="You will receive a reply soon."
+  [buttons]="alertButtons"
+  
+  (didDismiss)="setOpen(false)"
+></ion-alert> -->

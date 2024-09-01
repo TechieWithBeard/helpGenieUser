@@ -1,0 +1,33 @@
+.order-status-complete {
+    color: green; /* Or any other appropriate style for completed orders */
+  }
+  
+  .order-status-pending {
+    color: orange; /* Or any other appropriate style for pending orders */
+  }
+
+
+  .no-orders-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+  
+  .no-orders-icon {
+    font-size: 4rem;
+    color: #f53d3d; /* Red color */
+  }
+  
+  .no-orders-message {
+    margin-top: 1rem;
+    font-size: 1.5rem;
+  }
+  
+  .no-orders-description {
+    margin-top: 0.5rem;
+    font-size: 1rem;
+    color: #777; /* Gray color */
+  }
+  

@@ -1,0 +1,61 @@
+<div class="settings-container">
+  <!-- <div class='onesignal-customlink-container'></div> -->
+  <div class="settings-list-block">
+    <ion-list >
+      <!-- General Settings -->
+      <ion-list-header>
+        General Settings
+      </ion-list-header>
+      <!-- <ion-item (click)="openMailClient()">
+        Help Center
+      </ion-item> -->
+      <ion-item (click)="openBookings()">
+        My Bookings
+      </ion-item>
+      <ion-item (click)="manageAddress()">
+        Manage Address
+      </ion-item>
+    
+      <!-- About HelpGenie -->
+      <!-- <ion-list-header>
+        About Us
+      </ion-list-header> -->
+      <!-- <ion-item (click)="openAbout()">
+        About Us
+      </ion-item> -->
+      <app-about></app-about>
+      <!-- <ion-item>
+        Share HelpGeline
+      </ion-item> -->
+    
+      <!-- Bookings -->
+      <!-- <ion-list-header>
+        Bookings
+      </ion-list-header>
+      <ion-item>
+        Scheduled Bookings
+      </ion-item>
+      <ion-item>
+        Update on WhatsApp
+      </ion-item> -->
+    
+      <!-- Account Settings -->
+      <!-- <ion-list-header>
+        Account Settings
+      </ion-list-header> -->
+      <!-- <ion-item>
+        Delete Account
+      </ion-item> -->
+      <ion-item class="logout-container" (click)="logout()">
+        Logout
+      </ion-item>
+    </ion-list>
+    
+  </div>
+
+
+  <div class="settings-version-block">
+    <ion-chip [disabled]="true">  7.5.18 R361</ion-chip>
+    <ion-chip [disabled]="true">  {{isProduction}}</ion-chip>
+  </div>
+</div>
